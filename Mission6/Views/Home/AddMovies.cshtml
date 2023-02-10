@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "New Movies";
+    @model MovieModel
+}
+@* Page for New Movie Additions *@
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div class="row pt-3">
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" />
+    </div>
+
+    <div class="row pt-3">
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" />
+    </div>
+
+    <div class="row pt-3">
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" />
+    </div>
+
+    <div class="row pt-3">
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" />
+    </div>
+
+    <div class="row pt-3">
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+    </div>
+
+    <div class="row pt-3">
+        <label asp-for="Edited">Edited:</label>
+        <select asp-for="Edited">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </div>
+
+    <div class="row pt-3">
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" />
+    </div>
+
+    <div class="row pt-3">
+        <label asp-for="Notes">Notes:</label>
+        <input asp-for="Notes" />
+    </div>
+
+    <div class="row pt-5">
+        <button class="btn btn-dark" type="submit">Add Record</button>
+    </div>
+
+    <div asp-validation-summary="All"></div>
+
+</form>
