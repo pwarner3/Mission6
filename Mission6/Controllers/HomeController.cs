@@ -40,10 +40,15 @@ namespace Mission6.Controllers
         [HttpPost]
         public IActionResult AddMovies(MovieModel movie)
         {
-            _context.Add(movie);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Add(movie);
+                _context.SaveChanges();
+                return View(movie);
+            }
 
-            return View(movie);
+            return View();
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
