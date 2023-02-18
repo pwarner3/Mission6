@@ -14,8 +14,6 @@ namespace Mission6.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Category { get; set; }
-        [Required]
         public ushort Year { get; set; }
         [Required]
         public string Director { get; set; }
@@ -25,5 +23,10 @@ namespace Mission6.Models
         public string LentTo { get; set; }
         [StringLength(25)]
         public string Notes { get; set; }
+
+
+        // Foreign Key
+        public string CategoryId { get; set; }
+        public MovieCategory Category { get; set; }
     }
 }
