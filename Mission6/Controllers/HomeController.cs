@@ -21,12 +21,12 @@ namespace Mission6.Controllers
             _logger = logger;
             _context = context;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult MyPodcasts()
         {
             return View();
@@ -55,6 +55,7 @@ namespace Mission6.Controllers
             
         }
 
+        [HttpGet]
         public IActionResult ListMovies()
         {
             //pulling data from db

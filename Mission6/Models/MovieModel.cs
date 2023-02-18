@@ -11,13 +11,13 @@ namespace Mission6.Models
         [Key]
         [Required]
         public int MovieId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Year is required")]
         public ushort Year { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Director is required")]
         public string Director { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Rating is required")]
         public string Rating { get; set; }
         public bool Edited { get; set; }
         public string LentTo { get; set; }
