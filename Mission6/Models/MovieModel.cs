@@ -26,7 +26,7 @@ namespace Mission6.Models
 
 
         // Foreign Key
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public MovieCategory Category { get; set; }
     }
 }

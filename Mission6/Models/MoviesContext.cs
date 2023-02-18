@@ -14,47 +14,56 @@ namespace Mission6.Models
 
         }
 
-        public DbSet<MovieModel> Responses { get; set; }
+        public DbSet<MovieModel> Movies { get; set; }
+        public DbSet<MovieCategory> Categories { get; set; }
 
         /* To seed db with data */
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<MovieCategory>().HasData(
+                new MovieCategory {CategoryId = 1, CategoryName = "Action/Adventure" }, //Category Entry
+                new MovieCategory {CategoryId = 2, CategoryName = "Comedy" }, //Category Entry
+                new MovieCategory {CategoryId = 3, CategoryName = "Romance" }, //Category Entry
+                new MovieCategory { CategoryId = 4, CategoryName = "SciFi" } //Category Entry
+
+                );
+
             mb.Entity<MovieModel>().HasData(
                 new MovieModel //one movie entry
                 {
                     MovieId = 1,
                     Title = "Star Wars III - Revenge of the Sith",
-                    Category = "Action/Sci-Fi",
                     Year = 2005,
                     Director = "George Lucas",
                     Rating = "PG-13",
                     Edited = false,
                     LentTo = "",
-                    Notes = "Favorite Movie"
+                    Notes = "Favorite Movie",
+                    CategoryId = 4
                 },
                 new MovieModel //one movie entry
                 {
                     MovieId = 2,
                     Title = "Superbad",
-                    Category = "Comedy/Teen",
                     Year = 2007,
                     Director = "Greg Mottola",
                     Rating = "R",
                     Edited = false,
                     LentTo = "",
-                    Notes = "Funny and a little bad"
+                    Notes = "Funny and a little bad",
+                    CategoryId = 2
                 },
                 new MovieModel //one movie entry
                 {
                     MovieId = 3,
                     Title = "Thor: Ragnarok",
-                    Category = "Action/Sci-Fi",
                     Year = 2017,
                     Director = "Taika Waititi",
                     Rating = "PG-13",
                     Edited = false,
                     LentTo = "",
-                    Notes = "Great superhero movie"
+                    Notes = "Great superhero movie",
+                    CategoryId = 1
                 }
            );
         }

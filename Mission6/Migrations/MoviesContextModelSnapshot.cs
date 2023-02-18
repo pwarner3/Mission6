@@ -15,15 +15,51 @@ namespace Mission6.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
 
+            modelBuilder.Entity("Mission6.Models.MovieCategory", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Romance"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "SciFi"
+                        });
+                });
+
             modelBuilder.Entity("Mission6.Models.MovieModel", b =>
                 {
                     b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +88,15 @@ namespace Mission6.Migrations
 
                     b.HasKey("MovieId");
 
-                    b.ToTable("Responses");
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Movies");
 
                     b.HasData(
                         new
                         {
                             MovieId = 1,
-                            Category = "Action/Sci-Fi",
+                            CategoryId = 4,
                             Director = "George Lucas",
                             Edited = false,
                             LentTo = "",
@@ -70,7 +108,7 @@ namespace Mission6.Migrations
                         new
                         {
                             MovieId = 2,
-                            Category = "Comedy/Teen",
+                            CategoryId = 2,
                             Director = "Greg Mottola",
                             Edited = false,
                             LentTo = "",
@@ -82,7 +120,7 @@ namespace Mission6.Migrations
                         new
                         {
                             MovieId = 3,
-                            Category = "Action/Sci-Fi",
+                            CategoryId = 1,
                             Director = "Taika Waititi",
                             Edited = false,
                             LentTo = "",
@@ -91,6 +129,15 @@ namespace Mission6.Migrations
                             Title = "Thor: Ragnarok",
                             Year = (ushort)2017
                         });
+                });
+
+            modelBuilder.Entity("Mission6.Models.MovieModel", b =>
+                {
+                    b.HasOne("Mission6.Models.MovieCategory", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

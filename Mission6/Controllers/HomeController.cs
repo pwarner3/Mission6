@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission6.Models;
 using System;
@@ -50,6 +51,28 @@ namespace Mission6.Controllers
             return View();
             
         }
+
+        public IActionResult ListMovies()
+        {
+            //pulling data from db
+            var movies = _context.Movies
+                .Include(x => x.Category)
+                //.Where()
+                .OrderBy(x => x.Title)
+                .ToList();
+
+            return View(movies);
+        }
+
+
+
+
+
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
