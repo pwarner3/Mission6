@@ -68,6 +68,24 @@ namespace Mission6.Controllers
             return View(movies);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int movieid)
+        {
+            ViewBag.Categories = _context.Categories.ToList();
+
+            var movie = _context.Movies.Single(x => x.MovieId == movieid);
+
+            return View("AddMovies",movie);
+        }
+        [HttpPost]
+        public IActionResult Edit(MovieModel movieUpdated)
+        {
+            _context.Movies.Update(movieUpdated);
+            _context.SaveChanges();
+            return RedirectToAction("ListMovies");//Redirects to the list movie page
+
+        }
+
 
 
 
