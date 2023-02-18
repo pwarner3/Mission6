@@ -22,7 +22,7 @@ namespace Mission6.Controllers
             _context = context;
         }
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index() //Home
         {
             return View();
         }
@@ -56,7 +56,7 @@ namespace Mission6.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListMovies()
+        public IActionResult ListMovies() //Table View for Movies
         {
             //pulling data from db
             var movies = _context.Movies
@@ -98,7 +98,7 @@ namespace Mission6.Controllers
             _context.Remove(movieDelete);
             _context.SaveChanges();
 
-            return RedirectToAction("ListMovies");
+            return RedirectToAction("ListMovies");//Redirects to the list movie page
         }
 
 

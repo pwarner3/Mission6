@@ -14,8 +14,8 @@ namespace Mission6.Models
 
         }
 
-        public DbSet<MovieModel> Movies { get; set; }
-        public DbSet<MovieCategory> Categories { get; set; }
+        public DbSet<MovieModel> Movies { get; set; } //Table for Movies
+        public DbSet<MovieCategory> Categories { get; set; } //Table for Categories
 
         /* To seed db with data */
         protected override void OnModelCreating(ModelBuilder mb)
