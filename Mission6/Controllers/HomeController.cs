@@ -85,6 +85,21 @@ namespace Mission6.Controllers
             return RedirectToAction("ListMovies");//Redirects to the list movie page
 
         }
+        [HttpGet]
+        public IActionResult Delete(int movieid)
+        {
+            var movie = _context.Movies.Single(x => x.MovieId == movieid);
+
+            return View(movie);
+        }
+        [HttpPost]
+        public IActionResult Delete(MovieModel movieDelete)
+        {
+            _context.Remove(movieDelete);
+            _context.SaveChanges();
+
+            return RedirectToAction("ListMovies");
+        }
 
 
 
