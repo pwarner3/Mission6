@@ -26,6 +26,7 @@ namespace Mission6.Models
 
 
         // Foreign Key
+        [Required(ErrorMessage = "Category is required")]
         public int CategoryId { get; set; }
         public MovieCategory Category { get; set; }
     }

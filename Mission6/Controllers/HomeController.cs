@@ -35,6 +35,8 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult AddMovies()
         {
+            ViewBag.Categories = _context.Categories.ToList();//Using ViewBag which can be passed around views
+
             return View();
         }
 
@@ -45,9 +47,10 @@ namespace Mission6.Controllers
             {
                 _context.Add(movie);
                 _context.SaveChanges();
-                return View(movie);
+                return View("Confirmation",movie);
             }
 
+            ViewBag.Categories = _context.Categories.ToList();//Using ViewBag which can be passed around views
             return View();
             
         }

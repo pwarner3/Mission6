@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Movie Added";
+    @model Mission6.Models.MovieModel
+}
+
+<h2>Your movie was added.</h2>
+<h3>@Model.Title is a great movie!</h3>
+
+<div class="row mt-1 mb-2">
+    <a class="btn btn-success" asp-controller="Home" asp-action="AddMovies">Add Another</a>
+</div>
+
+<div class="row mt-1 mb-2">
+    <a class="btn btn-sm btn-outline-primary" asp-controller="Home" asp-action="Index">Home</a>
+</div>

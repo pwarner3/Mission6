@@ -8,8 +8,15 @@
 
 <form method="post">
     <div class="row pt-3">
-        <label asp-for="Category">Category:</label>
-        <input asp-for="Category" />
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId">
+            <option>Select Category</option>
+
+            @foreach (MovieCategory mc in ViewBag.Categories)
+            { 
+                <option value="@mc.CategoryId">@mc.CategoryName</option>
+            }
+        </select>
     </div>
 
     <div class="row pt-3">
